@@ -1,0 +1,46 @@
+# timegenieback
+How to run:
+
+Firstly once inside the directory run the following command: npm install
+
+Next creat a .env file inside follow this format:
+PORT = your port
+SQLUSER = "your postgres username"
+SQLHOST = "host youre running on (its probably localhost)"
+SQLDATABASE = "the name of your databse"
+SQLPASSWORD = "your sql password"
+SQLPORT = the port that sql is running on
+
+Now to run the program, in the same directory run the command: nodemon
+
+In Postman set the method to Get, and use the following URL http://localhost:your_port/user/employees
+
+No Json Send Needed
+
+When you run this you will recieve back the sql for all employees from all companies
+
+Next In Postman set the method to Get, and use the following URL http://localhost:your_port/user/companySearch
+
+Add this JSON
+
+When you run this you will recieve back the sql for all employees from all companies
+
+{
+    "company_name": "Google"
+}
+
+You should receive only those employees working at googles sql files
+
+Lastly In Postman set the method to Get, and use the following URL http://localhost:your_port/user/employeeSearch
+
+Add this JSON As the UUID is made on addition your UUID may differ so you may need to either check your sql or run one of the previous commands to get one
+
+{
+    "emp_id": "dab67b55-1af6-47f0-b7f8-a1f5eb894b36"
+}
+
+If succesful the employee thats id is present will be shown
+
+
+
+//file based on Coleman S prior test file changed to fit my needs

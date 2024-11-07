@@ -1,0 +1,19 @@
+To test the geofence locations you must log in as an employee, and have geofence data assigned to that employee.
+If you do not have geofence data assigned you can just manually assign a region in location-helper.js under the
+startGeofencing function.
+
+example:
+
+const region = [{
+            identifier: `ASU Poly Academic Center`,
+            latitude: 33.30710173441752,
+            longitude: -111.67832562600776,
+            radius: 300
+            notifyOnEnter: true,
+            notifyOnExit: true,
+        }]
+
+On android and I would guess iOS you can change your location within the emulator. Placing your location within the radius
+of the geofence will allow the user to clock in. If they are not inside the region then they cannot clock in.
+
+If a user is clocked and then moves outside the region then they are automatically clocked out.

@@ -1,0 +1,71 @@
+# timegenieback
+
+Firstly install sequelize and it's depencencies for postgresql
+
+In order to install sequelize into your project run the following command in your local repo
+
+npm install --save sequelize
+
+next install the next module for postgresql
+
+npm install --save pg pg-hstore # Postgres
+
+1. Open your cmd in the project directory and run: npm install
+
+2. create a .env file.
+   inside create these configurations:
+
+   PORT = Your port number.
+   SQLUSER = "Your sql username (it's probably postgres)."
+   SQLHOST = "Host name of your sql server (it's probably localhost)."
+   SQLDATABASE = "Name of your database."
+   SQLPASSWORD = "Your sql server password."
+   SQLPORT = The port your sql server is running on.
+
+   Make sure to keep the quotations except for PORT and SQLPORT.
+
+3. Now run the command: nodemon
+
+4. Using PostMan change the HTTP method to POST
+
+5. Enter the following into the textbox: http://localhost:your_port/company/getcompany
+
+6. Paste this JSON into Postman and run
+
+    {
+        "name": "Google"
+    }
+
+    You should get all the details on the Google company from the database.
+
+7. Next Enter the following into the textbox: http://localhost:your_port/company/insertcompany
+
+8. Paste this JSON into Postman and run using POST
+
+    {
+        "name": "Intel",
+        "phone": "123-456-9500",
+        "email": "intel@intell.com",
+        "description": "The Intel Company",
+        "address1": "Intel RD",
+        "address2": null,
+        "city": "Santa Clara",
+        "state": "CA",
+        "country": "US",
+        "postalcode":"95021"
+    }
+
+    You should get this in Postman "Company successfully inserted"
+    If you try to insert this company once again then you will get an error saying that the company already exists.
+
+9. Next Enter the following into the textbox: http://localhost:your_port/company/deletecompany
+
+10. Paste this JSON insto Postman and run using POST
+
+    {
+        "name": "Intel"
+    }
+
+    You should get this in Postman "Company successfully deleted from the database."
+    If you try to delete this company again you will get an error saying that the company does not exist.
+

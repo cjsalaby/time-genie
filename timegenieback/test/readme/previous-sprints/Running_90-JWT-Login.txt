@@ -1,0 +1,39 @@
+
+1. Firstly install JWT by running: npm install jsonwebtoken
+
+2. now try using http://localhost:port/user/userData
+
+    {
+        "first_name": "Frank",
+        "last_name": "Johnson"
+    }
+
+You will notice that you will get "message:" "Invalid token."
+This is because you have not logged in yet.
+You need to login first to generate a token to access this protected route.
+
+3. To login -> http://localhost:port/user/login
+
+    {
+        "username": "log1",
+        "password": "pw1"
+    }
+
+Now that you have logged in you should have recieved back this JSON message:
+{
+    "token": "some jumble of characters (your token)",
+    "message": "Success, Welcome Frank. Your role is MANAGER,OFFICE."
+}
+
+4. From the JSON copy the token
+5. In Postman click on the Authorization tab.
+6. Click on type and select Bearer Token
+7. In the box that appears paste your token
+8. Now once again try to access the userData route: http://localhost:port/user/userData
+
+    {
+        "first_name": "Frank",
+        "last_name": "Johnson"
+    }
+
+Now that you are authorized you should get back the information of this employee.

@@ -1,0 +1,18 @@
+How to run Task 190,
+Login as a manager
+
+These methods get employee time sheet data and returns it as CSV data.
+
+In postman set method to GET
+URL: http://localhost:PORT/api/timesheet/csv?days=
+the days query specifies how many days ago should the time sheets be retrieved, for example if days=30
+it will retrieve time sheet data from 30 days ago. If the days query is blank by default it will return data 7 days ago.
+
+In postman set the method to GET
+URL: http://localhost:PORT/api/timesheet/csv/employee?username=
+{
+    "days": 20
+}
+This route gets the timesheet data for one specific employee by using their username
+The days parameter specifies how many days ago should the date range be to get the data.
+If the days parameter is null, it will return data from the last 7 days.

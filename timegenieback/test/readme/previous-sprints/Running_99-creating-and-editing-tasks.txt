@@ -1,0 +1,43 @@
+# timegenieback
+
+This task instructions includes getting tasks via ID and project_id
+You can also create and edit existing tasks.
+
+REQUIRED: Add the two new task and project sql scripts to your database.
+
+1. run nodemon in your console.
+
+2. In Postman set your method to GET and the URL to http://localhost:port/user/project?project_id=1
+   Postman should return all tasks under the project with ID 1.
+
+3. In Postman set your method to GET and the URL to http://localhost:port/user/task?task_id=1
+   Postman should return the details of only this task.
+
+4. Now set the method to POST and use the following URL http://localhost:3000/user/createtask
+   and put this in the body:
+   {
+       "project_id": 1,
+       "name": "HELLO!",
+       "description": "This is a new task!"
+   }
+
+   If you successfully create a new task you should receive back: "message": "New task created."
+
+5. Next keep the method as POST and use the next URL http://localhost:3000/user/edittask
+   For this one task_id is required. But all the other fields are optional:
+   Examples:
+   {
+       "task_id": 1,
+       "new_name": "GOODBYE.",
+       "new_description": "updated this task!",
+       "new_status": "IN-PROGRESS"
+   }
+
+   {
+          "task_id": 1,
+          "new_status": "COMPLETED"
+   }
+   setting the new status to COMPLETED will update the end_date setting it to the current date.
+   Any other status will set the end_date back to null.
+
+   Optional fields are: new_name, new_description, new_status, assign_employee

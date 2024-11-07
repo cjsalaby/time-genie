@@ -1,0 +1,15 @@
+Firstly you must login as a manager in order to edit an employee's timesheet.
+
+Next select an employee (username) and one the timesheets (timesheet_id) you want to edit that belongs to that employee.
+
+You can get the timesheet_id from your database
+
+In Postman use this URL http://localhost:3000/api/timesheet/edit
+Follow this body request example (the IDs may be different edit this example to suit your environment).
+{
+    "username": "user7",
+    "timesheet_id": 8,
+    "clock_in": "2024-01-17 00:15:00", -- this follows this format (YYYY-MM-DD HH:MM:SS)
+    "clock_out: "" -- you can leave either clock in or out blank, depending on which one you want to edit.
+}
+

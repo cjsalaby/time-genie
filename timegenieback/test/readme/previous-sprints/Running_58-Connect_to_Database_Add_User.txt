@@ -1,0 +1,38 @@
+# timegenieback
+How to run:
+
+Firstly once inside the directory run the following command: npm install
+
+Next creat a .env file inside follow this format:
+PORT = your port
+SQLUSER = "your postgres username"
+SQLHOST = "host youre running on (its probably localhost)"
+SQLDATABASE = "the name of your databse"
+SQLPASSWORD = "your sql password"
+SQLPORT = the port that sql is running on
+
+Now to run the program, in the same directory run the command: nodemon
+
+In Postman set the method to POST, and use the following URL http://localhost:your_port/manager/insertemployee
+
+Now send the following JSON:
+
+{   
+    "manager_username": "log1",
+    "company_name": "Google",
+    "first_name": "Frank",
+    "last_name": "Zappa",
+    "username": "defaultLog",
+    "password": "somePassword",
+    "roles" : ["OFFICE", "REMOTE", "REPAIR"],
+    "employment_type": "FULLTIME"
+}
+
+You should get a message back "Employee inserted"
+This change can be reflected in your database if you query all of the employees, this new employee should be inserted.
+
+If you try to insert again without changing the username you will recieve back: "This username already exists."
+
+If you try to insert another employee using an ID that does not belong to a manager you will recieve this back: "Unauthorized: Not manager!"
+
+If you were to run this again you should get the message back "emp_id already exists." meaning that this employee already exists.

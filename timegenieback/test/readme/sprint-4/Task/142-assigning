@@ -1,0 +1,32 @@
+Firstly to assigning employees to a project.
+You need to log in as a manager.
+
+Use the url: http://localhost:[PORT]/app/project/assign
+Set the method to PATCH
+In body use this format
+    {
+        "username": "some user"
+        "company": "some company name"
+        "project_id": some integer (do not surround the integer in quotations)
+    }
+
+If you successfully assign an employee to a project you just get that project you assigned them to back with their
+UUID in the "assigned_employees" field.
+
+Next assigning employees to tasks, this one there are two ways to assign, as employees can assign themselves to tasks
+or a manager can assign employees to tasks.
+
+Use the url: http://localhost:[PORT]/app/task/assign
+For the first one log in as a manager
+set the method to PATCH
+use the following format
+    {
+        "username": "some user"
+        "company": "some company name"
+        "task_id": some integer (do not surround the integer in quotations)
+    }
+
+Lastly a user assigning themselves to a task all you need to do is log in and send the following body
+    {
+        "task_id": some integer (do not surround the integer in quotations)
+    }

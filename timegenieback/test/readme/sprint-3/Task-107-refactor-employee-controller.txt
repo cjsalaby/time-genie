@@ -1,0 +1,127 @@
+
+
+
+
+
+
+
+
+
+
+# timegenieback
+
+How to run:
+Using Postman
+
+This goes over some refactoring and authorization:
+
+1. Firstly you need to login to the system, our databases may differ but you need an employee with role: MANAGER
+   method: POST
+   URL: http://localhost:3000/app/login
+
+   {
+       "username": "log1",
+       "company_name": "Google",
+       "password": "pw1"
+   }
+
+   You should receive back a message similar to this:
+
+   {
+       "success": true,
+       "message": "Welcome back log1",
+       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZzEiLCJpYXQiOjE2OTkzNDYwMTksImV4cCI6MTY5OTM0OTYxOX0.xLqlF1lhqLuWCoXzgbkkXATP3ylAI1WEvK_VtRFsUDA"
+   }
+
+   Now you will need that token, copy it from YOUR postman.
+
+2. Now you can create an employee, if you were to try to create an employee without logging in you would get an authorized message.
+   - Before you send the request firstly open the Authorization tab
+   - In the Type field select Bearer Token
+   - In the box to the right paste you token
+
+   method: PUT
+   URL: http://localhost:3000/app/employee
+
+   {
+       "company_name": "Google",
+       "first_name": "Charles",
+       "last_name": "Mingus",
+       "username": "char12",
+       "password": "bleating",
+       "roles": ["OFFICE"],
+       "employment_type": "PARTTIME"
+   }
+
+   Now send the request, you should receive back the information of this new employee.
+
+3. Now to update the attributes of the employee you still need to use that authorization token.
+   Do the same as before and paste the token in the Authorization tab.
+
+   method: PATCH
+   URL: http://localhost:3000/app/employee
+
+   {
+       "username": "char12",
+       "company_name": "Google",
+       "roles": ["REMOTE", "REPAIR"],
+       "employment_type": "FULLTIME"
+   }
+
+   Now you can send the request, you should receive back the new updated info on this employee.
+
+4. Once again use the same token that was generated at the beginning when you logged in.
+   Paste the token in the authorization tab before you send the request.
+
+   method: DELETE
+   URL: http://localhost:3000/app/employee
+   {
+       "username": "char12",
+       "company_name": "Google"
+   }
+
+   You should receive back a message that the employee was deleted.
+
+5. Now repeat step 2 and recreate that user again because you will login as this employee instead for the next steps.
+
+6. Logging in as an employee, as an employee you have a limited amount of things you can do, if you were to try
+   to create, update or delete an employee your requests would be denied.
+
+   method: POST
+   http://localhost:3000/app/login
+
+   {
+       "username": "char12",
+       "company_name": "Google,
+       "password": "bleating"
+   }
+
+
+7. However you can still get the information of this employee as long as you are logged in.
+   Go into the Authorization tab and paste the token that you received after logging in.
+
+   method: GET
+   URL: http://localhost:3000/app/employee
+
+   Now when you send the request you will get the information about the employee you are logged in as.
+
+8. Next we want to hash this employees password as it is in plain text.
+   Paste the token in the Authorization tab
+
+   method: PATCH
+   URL: http://localhost:3000/app/login
+
+   {
+       "password": "bleating",
+       "new_password": "babbling"
+   }
+
+   Now you have updated this employees password into one that is safer. You should receive back the new PW hashed.
+
+9. Last one is unprotected you can reach this endpoint by just using the URL
+   method: GET
+   URL: http://localhost:3000/app/employee/company?name=Google
+
+   This just gets all the employees that belong to the company Google.
+
+

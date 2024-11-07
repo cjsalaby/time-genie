@@ -1,0 +1,1 @@
+On the login screen enter in 'manager' else you will be taken to the regular employee screen.

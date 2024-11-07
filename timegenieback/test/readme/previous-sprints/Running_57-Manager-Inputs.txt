@@ -1,0 +1,54 @@
+# timegenieback
+How to run:
+
+Firstly once inside the directory run the following command: npm install
+
+Next creat a .env file inside follow this format:
+PORT = your port
+SQLUSER = "your postgres username"
+SQLHOST = "host youre running on (its probably localhost)"
+SQLDATABASE = "the name of your databse"
+SQLPASSWORD = "your sql password"
+SQLPORT = the port that sql is running on
+
+Now to run the program, in the same directory run the command: nodemon
+
+In Postman set the method to POST, and use the following URL http://localhost:your_port/manager/deleteemployee
+
+In the Headers tab add the following key-value pair: "Content-Type": "application/json"
+
+Now send the following JSON:
+
+{   
+    "manager_username": "log1",
+    "username": "log3"
+}
+
+When you run this you will recieve back "Employee deleted."
+
+Run this again and you will recieve "This employee username does not exist."
+
+If you were to alter the manager_username to an employee that is not a manager eg. log2 you will recieve back: "Unauthorized: Not manager!"
+
+In Postman set the method to POST, and use the following URL http://localhost:your_port/manager/editemployee
+
+A manager can edit an employees roles and employment_type all three of these will work depending on what the manager wants to update on an employee
+
+{   
+    "manager_username": "log1",
+    "username": "log4",
+    "roles" : ["OFFICE", "REPAIR"],
+    "employment_type": "PARTTIME"
+}
+
+{   
+    "manager_username": "log1",
+    "username": "log4",
+    "roles" : ["REMOTE", "REPAIR"],
+}
+
+{   
+    "manager_username": "log1",
+    "username": "log4",
+    "employment_type": "FULLTIME"
+}

@@ -1,0 +1,29 @@
+# timegenieback
+
+How to run:
+
+1. Open your cmd in the project directory and run: npm install
+
+2. create a .env file.
+   inside create these configurations:
+
+   PORT = Your port number.
+   SQLUSER = "Your sql username (it's probably postgres)."
+   SQLHOST = "Host name of your sql server (it's probably localhost)."
+   SQLDATABASE = "Name of your database."
+   SQLPASSWORD = "Your sql server password."
+   SQLPORT = The port your sql server is running on.
+
+   Make sure to keep the quotations except for PORT and SQLPORT.
+
+3. Now run the command: nodemon
+
+4. Using PostMan change the HTTP method to GET
+
+5. Enter the following into the textbox:
+
+http://localhost:<your-port>/user/timesheets?emp_username=log1&emp_company_name=Google
+
+You should receieve back this employees time sheet data in json format in postman.
+
+

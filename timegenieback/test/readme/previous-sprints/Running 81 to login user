@@ -1,0 +1,41 @@
+# timegenieback
+
+How to run:
+
+1. Open your cmd in the project directory and run: npm install
+
+2. create a .env file.
+   inside create these configurations:
+
+   PORT = Your port number.
+   SQLUSER = "Your sql username (it's probably postgres)."
+   SQLHOST = "Host name of your sql server (it's probably localhost)."
+   SQLDATABASE = "Name of your database."
+   SQLPASSWORD = "Your sql server password."
+   SQLPORT = The port your sql server is running on.
+
+   Make sure to keep the quotations except for PORT and SQLPORT.
+
+3. Now run the command: nodemon
+
+4. Using PostMan change the HTTP method to POST
+
+5. Enter the following into the textbox: http://localhost:your_port/user/login
+
+6. Below the textbox select the Body tab.
+
+7. Below the Body tab select raw and change the format to JSON (the option to change format is on the right the blue text).
+
+8. Now in the textfield below paste this JSON:
+
+    {
+        "emp_login": "log1",
+        "emp_pw": "pw1"
+    }
+
+    Depending on your employee database you should get a SUCCESS statement along with a welcome message I added a simple statement of the users role and name to the output.
+    If this returns an error on the first try check your database, check that you have the employee table inserted along with the data.
+    If not then the credentials are wrong and you will get an ERROR statement.
+
+//From coleman S original task 62 test run mostly removed a section i believe is non applicable
+

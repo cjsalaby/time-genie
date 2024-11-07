@@ -1,0 +1,2 @@
+ALTER TABLE breaks
+ADD COLUMN is_flagged BOOLEAN;

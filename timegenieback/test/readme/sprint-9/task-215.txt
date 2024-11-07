@@ -1,0 +1,37 @@
+Firstly insert the new table into your database, /sql/geofencing-table.sql
+
+In postman log in as a manager.
+
+To create a geofence use POST and this URL: http://localhost:3000/api/geofence
+Example body:
+{
+    "username": "log5",
+    "geolocation": "32.812693483263004, -117.10606747179358",
+    "radius": 100
+}
+
+You can also update the geofence with PATCH and http://localhost:3000/api/geofence?geofence_id=
+Can update geolocation and radius. geofence_id is required.
+Example body:
+{
+    "radius": 50
+}
+
+Now log in as an employee
+Using this route with GET method http://localhost:3000/api/geofence
+This route should get the active geofence locations for this employee.
+
+Lastly log in as a manager and use DELETE with this route http://localhost:3000/api/geofence?geofence_id=
+You should get a success message if you deleted the geofence.
+
+################################################################
+Now for the changes to timesheets, under sql/alter-timesheet.sql
+this new script drops the location column and adds two new ones: clock_in_location and clock_out_location
+The new clock in/out method requires the user to add a body now
+http://localhost:3000/api/timesheet
+example body:
+{
+    "geolocation": "33.3071241267787, -111.67773093761642"
+}
+
+However the front end will handle the location, this is just an example you can do in postman.

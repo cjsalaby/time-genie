@@ -1,0 +1,33 @@
+
+
+1. Open your cmd in the project directory and run: npm install
+
+2. create a .env file.
+   inside create these configurations:
+
+   PORT = Your port number.
+   SQLUSER = "Your sql username (it's probably postgres)."
+   SQLHOST = "Host name of your sql server (it's probably localhost)."
+   SQLDATABASE = "Name of your database."
+   SQLPASSWORD = "Your sql server password."
+   SQLPORT = The port your sql server is running on.
+
+   Make sure to keep the quotations except for PORT and SQLPORT.
+
+3. Now run the command: nodemon
+
+4. Using PostMan change the HTTP method to Get
+
+5. Enter the following into the textbox: http://localhost:your_port/user/UserData
+
+6. Paste this JSON into Postman and run
+
+    {
+        "first_name": "Frank",
+        "last_name": "Johnson"
+    }
+
+    You should get all the details on the Frank Johnson from the database.
+
+
+//Based on Coleman basic template

@@ -1,0 +1,21 @@
+Firstly in postman log in as either an Admin or Superadmin
+
+1. change timezone of company
+
+Example:
+PATCH
+http://localhost:3000/api/company/timezone
+{
+    "name": "Google",
+    "timezone": "America/New_York"
+}
+
+2. change cron job of company
+
+Example:
+PATCH
+http://localhost:3000/api/company/clock
+{
+    "name": "Google",
+    "cron_job": "0 0,12 1 */2 *"
+}

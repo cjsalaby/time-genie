@@ -1,0 +1,17 @@
+1. Firstly, install bcrypt using the following command: npm install bcrypt
+
+2. Run nodemon
+
+3. in Postman use this JSON and URL: http://localhost:3000/user/updatepassword
+
+    {
+        "username" : "log1",
+        "old_password" : "pw1",
+        "new_password" : "test"
+    }
+
+You should get back "Employee password updated."
+
+4. you can test this using the login route to see if the changes worked.
+
+5. You can change an employees password as many times as youd like.

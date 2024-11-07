@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "TimeGenieFront",
+    "slug": "timegenie-dev",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/hex.png",
+      "backgroundColor": "#171A21"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "infoPlist": {
+        "UISupportsDocumentBrowser": true,
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true
+      },
+      "bundleIdentifier": "com.timegenie.mobile",
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    },
+    "android": {
+      "googleServicesFile": "./android/app/google-services.json",
+      "permissions": [
+        "ACCESS_BACKGROUND_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "runtimeVersion": "1.0.0",
+      "package": "com.timegenie.mobile"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4cc10074-ee99-4b86-8c2c-c973ff5d064e"
+      }
+    },
+    "owner": "timegenie",
+    "updates": {
+      "url": "https://u.expo.dev/6a26f301-59fa-4b6c-af87-f4aade52a1d6"
+    }
+  }
+}

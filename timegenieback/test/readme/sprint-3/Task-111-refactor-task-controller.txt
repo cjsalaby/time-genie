@@ -1,0 +1,78 @@
+# timegenieback
+
+How to run:
+Using Postman
+
+This goes over some refactoring and authorization:
+
+1. Firstly you need to login to the system, our databases may differ but you need an employee with role: MANAGER
+   method: POST
+   URL: http://localhost:3000/app/login
+
+   {
+   "username": "log1",
+   "company_name": "Google",
+   "password": "pw1"
+   }
+
+   You should receive back a message similar to this:
+
+   {
+   "success": true,
+   "message": "Welcome back log1",
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZzEiLCJpYXQiOjE2OTkzNDYwMTksImV4cCI6MTY5OTM0OTYxOX0.xLqlF1lhqLuWCoXzgbkkXATP3ylAI1WEvK_VtRFsUDA"
+   }
+
+   Now you will need that token, copy it from YOUR postman.
+
+2. Now you can query a task, if you were to try to create an employee without logging in you would get an authorized message.
+    - Before you send the request firstly open the Authorization tab
+    - In the Type field select Bearer Token
+    - In the box to the right paste you token
+
+    method: get
+   URL: http://localhost:3000/app/project?project_id=2
+
+
+   You should receive back a list of all task on project 2
+   the basic projects have none on any others than project 2 so if you try these it will show you a message that no tasks exist
+
+3. Adding a new task to a project with name aknd description
+
+   method: PUT
+   URL: http://localhost:3000/app/task
+
+   {
+       "project_id": "2",
+       "name": "new_task",
+       "description": "basic description of task"
+   }
+
+   you should receive back the confirmation of creation
+
+4. Updateding the created task
+
+   method: Patch
+   URL: http://localhost:3000/app/task
+
+   {
+       "task_id": "6",
+       "new_name": "test_task",
+       "new_description": "this is a small test to ensure my code works and changes",
+       "new_status": "COMPLETED"
+   }
+
+   You should receive back a message that confirms the update.
+   You can add an assigned employee but you must use UUID for that employee
+   The task id may change depending on your current sql if so you can use step 2 to find where your task was created under
+
+
+5. Logging in as an employee, as an employee you have a limited amount of things you can do, if you were to try
+   to create, update or delete an employee your requests would be denied.
+
+   method: get
+   URL: http://localhost:3000/app/task?task_id=6
+
+    You should receive back the task that you created and updated
+
+

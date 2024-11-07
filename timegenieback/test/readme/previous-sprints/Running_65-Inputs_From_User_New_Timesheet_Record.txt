@@ -1,0 +1,52 @@
+# timegenieback
+
+How to run:
+
+1. Open your cmd in the project directory and run: npm install
+
+2. create a .env file.
+   inside create these configurations:
+
+   PORT = Your port number.
+   SQLUSER = "Your sql username (it's probably postgres)."
+   SQLHOST = "Host name of your sql server (it's probably localhost)."
+   SQLDATABASE = "Name of your database."
+   SQLPASSWORD = "Your sql server password."
+   SQLPORT = The port your sql server is running on.
+
+   Make sure to keep the quotations except for PORT and SQLPORT.
+
+3. Now run the command: nodemon
+
+4. Using PostMan change the HTTP method to POST
+
+5. Enter the following into the textbox: http://localhost:your_port/user/clockin
+
+6. Below the textbox select the Body tab.
+
+7. Below the Body tab select raw and change the format to JSON (the option to change format is on the right the blue text).
+
+8. Now in the textfield below paste this JSON:
+
+    {
+        "emp_username" : "log1",
+        "emp_company_name" : "Google"
+    }
+
+    You should receieve back ""Clocking in employee!" in Postman.
+    If you were to run it again you should get back an error "This employee is still clocked in."
+
+9. Now in order to clock out the employee use this URL: http://localhost:your_port/user/clockout
+
+10. Now in the textfield below paste this JSON:
+
+    {
+        "emp_username" : "log1",
+        "emp_company_name" : "Google"
+    }
+
+    You should receieve back "Clocking out" in Postman.
+    If you were to run it again you should get back an error "Employee has not clocked in yet!"
+
+
+
